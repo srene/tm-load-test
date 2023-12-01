@@ -23,7 +23,7 @@ type Config struct {
 	ClientFactory        string   `json:"client_factory"`         // Which client factory should we use for load testing?
 	Connections          int      `json:"connections"`            // The number of WebSockets connections to make to each target endpoint.
 	Time                 int      `json:"time"`                   // The total time, in seconds, for which to handle the load test.
-	SendPeriod           int      `json:"send_period"`            // The period (in seconds) at which to send batches of transactions.
+	SendPeriod           float32  `json:"send_period"`            // The period (in seconds) at which to send batches of transactions.
 	Rate                 int      `json:"rate"`                   // The number of transactions to generate, per send period.
 	Size                 int      `json:"size"`                   // The desired size of each generated transaction, in bytes.
 	Count                int      `json:"count"`                  // The maximum number of transactions to send. Set to -1 for unlimited.
@@ -78,8 +78,8 @@ func (c Config) Validate() error {
 	if c.Time < 1 {
 		return fmt.Errorf("expected load test time to be >= 1 second, but was %d", c.Time)
 	}
-	if c.SendPeriod < 1 {
-		return fmt.Errorf("expected transaction send period to be >= 1 second, but was %d", c.SendPeriod)
+	if c.SendPeriod == 0 {
+		return fmt.Errorf("expected transaction send period to be > 0 second, but was %f", c.SendPeriod)
 	}
 	if c.Rate < 1 {
 		return fmt.Errorf("expected transaction rate to be >= 1, but was %d", c.Rate)

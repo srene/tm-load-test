@@ -173,7 +173,7 @@ func (t *Transactor) sendLoop() {
 
 	pingTicker := time.NewTicker(connPingPeriod)
 	timeLimitTicker := time.NewTicker(time.Duration(t.config.Time) * time.Second)
-	sendTicker := time.NewTicker(time.Duration(t.config.SendPeriod) * time.Second)
+	sendTicker := time.NewTicker(time.Duration(t.config.SendPeriod * float32(time.Second)))
 	progressTicker := time.NewTicker(t.getProgressCallbackInterval())
 	defer func() {
 		pingTicker.Stop()
@@ -270,7 +270,7 @@ func (t *Transactor) sendTransactions() error {
 		}
 		sentBytes += int64(len(tx))
 		// if we have to make way for the next batch
-		if time.Since(batchStartTime) >= time.Duration(t.config.SendPeriod)*time.Second {
+		if time.Since(batchStartTime) >= time.Duration(t.config.SendPeriod*float32(time.Second)) {
 			break
 		}
 	}
