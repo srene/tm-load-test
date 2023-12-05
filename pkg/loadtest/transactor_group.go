@@ -1,6 +1,7 @@
 package loadtest
 
 import (
+	"fmt"
 	"sync"
 	"time"
 
@@ -79,6 +80,7 @@ func (g *TransactorGroup) SetProgressCallback(interval time.Duration, callback f
 
 // Start will handle through all transactors and start them.
 func (g *TransactorGroup) Start() {
+	fmt.Println("Starting TransactorGroup %d", len(g.transactors))
 	go g.progressReporter()
 	for _, t := range g.transactors {
 		t.Start()
