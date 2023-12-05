@@ -95,7 +95,7 @@ func (g *TransactorGroup) Cancel() {
 
 // Wait will wait for all transactors to complete, returning the first error
 // we encounter.
-func (g *TransactorGroup) 	() error {
+func (g *TransactorGroup) Wait() error {
 	defer func() {
 		close(g.stopProgressReporter)
 		<-g.progressReporterStopped
