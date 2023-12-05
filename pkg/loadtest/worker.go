@@ -244,7 +244,7 @@ func (w *Worker) waitForStart() error {
 }
 
 func (w *Worker) executeLoadTest() error {
-	w.logger.Info("Connecting to remote endpoints")
+	w.logger.Info("Connecting to remote endpoints2")
 	tg := NewTransactorGroup()
 	cfg := w.Config()
 	if err := tg.AddAll(&cfg); err != nil {

@@ -10,7 +10,7 @@ import (
 func ExecuteStandalone(cfg Config) error {
 	logger := logging.NewLogrusLogger("loadtest")
 
-	logger.Debug("Attempting standalone load test against endpoints", "endpoints", cfg.Endpoints)
+	logger.Info("Attempting standalone load test against endpoints", "endpoints", cfg.Endpoints)
 
 	// if we need to wait for the network to stabilize first
 	if cfg.ExpectPeers > 0 {
@@ -31,7 +31,7 @@ func ExecuteStandalone(cfg Config) error {
 		logger.Debug("Updated list of endpoints for test", "endpoints", cfg.Endpoints)
 	}
 
-	logger.Info("Connecting to remote endpoints")
+	logger.Info("Connecting to remote endpoints1")
 	tg := NewTransactorGroup()
 	tg.SetLogger(logger)
 	if err := tg.AddAll(&cfg); err != nil {
