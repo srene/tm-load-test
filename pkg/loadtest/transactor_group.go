@@ -4,7 +4,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/informalsystems/tm-load-test/internal/logging"
+	"github.com/srene/tm-load-test/internal/logging"
 )
 
 // TransactorGroup allows us to encapsulate the management of a group of
@@ -95,7 +95,7 @@ func (g *TransactorGroup) Cancel() {
 
 // Wait will wait for all transactors to complete, returning the first error
 // we encounter.
-func (g *TransactorGroup) Wait() error {
+func (g *TransactorGroup) 	() error {
 	defer func() {
 		close(g.stopProgressReporter)
 		<-g.progressReporterStopped

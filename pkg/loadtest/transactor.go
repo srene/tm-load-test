@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gorilla/websocket"
-	"github.com/informalsystems/tm-load-test/internal/logging"
+	"github.com/srene/tm-load-test/internal/logging"
 )
 
 const (

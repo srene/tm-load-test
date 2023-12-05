@@ -8,8 +8,8 @@ import (
 	"unicode"
 
 	"github.com/gorilla/websocket"
-	"github.com/informalsystems/tm-load-test/internal/logging"
 	uuid "github.com/satori/go.uuid"
+	"github.com/srene/tm-load-test/internal/logging"
 )
 
 const (

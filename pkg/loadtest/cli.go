@@ -6,9 +6,9 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/informalsystems/tm-load-test/internal/logging"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
+	"github.com/srene/tm-load-test/internal/logging"
 )
 
 // CLIVersion must be manually updated as new versions are released.
